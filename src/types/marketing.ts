@@ -83,18 +83,13 @@ export interface DashboardInsight {
   icon: IconName;
 }
 
-export interface DashboardPanel {
+export interface ProductScreenshot {
   id: string;
   title: string;
-  eyebrow: string;
+  module: string;
   description: string;
-  icon: IconName;
-  metric: {
-    label: string;
-    value: string;
-  };
-  points: string[];
-  accentClassName: string;
+  src: string;
+  alt: string;
 }
 
 export type SolutionSlug =

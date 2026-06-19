@@ -1,6 +1,5 @@
 import type {
   DashboardInsight,
-  DashboardPanel,
   HomepageAudience,
   HomepageMetric,
   ProblemItem,
@@ -164,81 +163,6 @@ export const dashboardInsights: DashboardInsight[] = [
     description:
       "Jejak aktivitas penting membantu pemeriksaan transaksi dan perubahan data.",
     icon: "FileCheck2",
-  },
-];
-
-export const dashboardPanels: DashboardPanel[] = [
-  {
-    id: "billing",
-    title: "Billing, DRD, dan Piutang",
-    eyebrow: "Revenue cycle",
-    description:
-      "Pantau invoice periode, DRD, status lunas, tunggakan, aging, dan piutang pelanggan dalam satu tampilan.",
-    icon: "ReceiptText",
-    metric: {
-      label: "Objek kontrol",
-      value: "DRD + AR",
-    },
-    points: [
-      "Satu invoice regular per sambungan dan periode",
-      "Tarif versioned tersimpan pada invoice",
-      "Dasar aging, ECL, dunning, dan rekonsiliasi piutang",
-    ],
-    accentClassName: "bg-sky-600",
-  },
-  {
-    id: "kasir",
-    title: "Kasir dan Settlement",
-    eyebrow: "Collection control",
-    description:
-      "Lihat penerimaan pembayaran counter, QRIS, VA, status lunas, dan alokasi pembayaran yang terhubung ke tagihan.",
-    icon: "CreditCard",
-    metric: {
-      label: "Objek kontrol",
-      value: "Idempotent pay",
-    },
-    points: [
-      "Pembayaran partial, full, dan overpay ke deposit",
-      "Rekap kasir harian dan referensi kanal pembayaran",
-      "Faktur void dan written_off tidak menerima pembayaran baru",
-    ],
-    accentClassName: "bg-teal-600",
-  },
-  {
-    id: "akuntansi",
-    title: "Jurnal, GL, dan SAK EP",
-    eyebrow: "Finance traceability",
-    description:
-      "Hubungkan transaksi sumber dengan jurnal double-entry, buku besar posted, period lock, dan laporan SAK EP.",
-    icon: "Calculator",
-    metric: {
-      label: "Objek kontrol",
-      value: "Debit = Credit",
-    },
-    points: [
-      "Jurnal posted bersifat immutable",
-      "Koreksi jurnal melalui reversal, bukan edit langsung",
-      "Laporan berasal dari posted ledger dan period lock",
-    ],
-    accentClassName: "bg-amber-500",
-  },
-  {
-    id: "audit",
-    title: "Audit Trail dan SoD",
-    eyebrow: "Internal control",
-    description:
-      "Tampilkan aktivitas penting, pemisahan tugas, dan integritas hash-chain untuk membantu SPI dan auditor internal.",
-    icon: "ShieldCheck",
-    metric: {
-      label: "Objek kontrol",
-      value: "Hash-chain",
-    },
-    points: [
-      "Kasir tidak mengakses GL dan akuntan tidak menjadi poster tunggal",
-      "Hash-chain mendeteksi perubahan jurnal posted",
-      "Koreksi meter, void, write-off, dan reversal meninggalkan jejak",
-    ],
-    accentClassName: "bg-slate-800",
   },
 ];
 

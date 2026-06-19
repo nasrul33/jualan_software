@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { MarketingIcon } from "@/components/icons/icon-map";
-import { InteractiveDashboardPreview } from "@/components/interactive/interactive-dashboard-preview";
+import { ProductScreenshotGallery } from "@/components/interactive/product-screenshot-gallery";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { buttonVariants } from "@/components/ui/button";
-import { dashboardInsights, dashboardPanels } from "@/content/home";
+import { dashboardInsights } from "@/content/home";
+import { productScreenshots } from "@/content/product-screenshots";
 
 export function DashboardPreviewSection() {
   return (
@@ -14,9 +15,9 @@ export function DashboardPreviewSection() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <SectionHeading
-              eyebrow="Preview Dashboard"
-              title="Satu layar untuk melihat hubungan DRD, kasir, GL, dan audit"
-              description="Dashboard disusun untuk membantu manajemen membaca status operasional, piutang, penerimaan, jurnal, dan kontrol audit tanpa kehilangan jejak transaksi sumber."
+              eyebrow="Preview Aplikasi"
+              title="Tampilan nyata modul billing, kasir, akuntansi, dan laporan"
+              description="Galeri ini menampilkan layar demo yang sudah dianonimkan untuk calon pengguna: dashboard, baca meter, kasir, tarif, DRD, jurnal, neraca saldo, CoA, dan laporan keuangan."
             />
             <div className="mt-6 grid gap-3">
               {dashboardInsights.map((item) => (
@@ -46,11 +47,11 @@ export function DashboardPreviewSection() {
                 className: "mt-8",
               })}
             >
-              Minta Demo Dashboard
+              Minta Demo Aplikasi
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <InteractiveDashboardPreview panels={dashboardPanels} />
+          <ProductScreenshotGallery screenshots={productScreenshots} />
         </div>
       </div>
     </section>
