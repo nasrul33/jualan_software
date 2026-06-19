@@ -1,20 +1,21 @@
 # syntax=docker/dockerfile:1
 
-FROM node:22-alpine AS base
+FROM node:22-bookworm-slim AS base
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN apk add --no-cache libc6-compat
 
 FROM base AS deps
+ARG NPM_CONFIG_STRICT_SSL=true
+ENV npm_config_strict_ssl=$NPM_CONFIG_STRICT_SSL
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --no-audit --no-fund
 
 FROM base AS builder
 ARG NEXT_PUBLIC_SITE_URL=https://pdamcore.id
 ARG NEXT_PUBLIC_APP_URL=https://app.pdamcore.id
 ARG NEXT_PUBLIC_WHATSAPP_NUMBER=6289512728534
 ARG NEXT_PUBLIC_CONTACT_EMAIL=info@pdamcore.id
-ARG NEXT_PUBLIC_ANALYTICS_ENABLED=false
+ARG NEXT_PUBLIC_ANALYTICS_ENABLED=true
 ARG NEXT_PUBLIC_ANALYTICS_ID=
 ARG NEXT_PUBLIC_GA_MEASUREMENT_ID=
 ARG NEXT_PUBLIC_PLAUSIBLE_DOMAIN=pdamcore.id
@@ -30,14 +31,14 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-FROM node:22-alpine AS runner
+FROM base AS runner
 WORKDIR /app
 
 ARG NEXT_PUBLIC_SITE_URL=https://pdamcore.id
 ARG NEXT_PUBLIC_APP_URL=https://app.pdamcore.id
 ARG NEXT_PUBLIC_WHATSAPP_NUMBER=6289512728534
 ARG NEXT_PUBLIC_CONTACT_EMAIL=info@pdamcore.id
-ARG NEXT_PUBLIC_ANALYTICS_ENABLED=false
+ARG NEXT_PUBLIC_ANALYTICS_ENABLED=true
 ARG NEXT_PUBLIC_ANALYTICS_ID=
 ARG NEXT_PUBLIC_GA_MEASUREMENT_ID=
 ARG NEXT_PUBLIC_PLAUSIBLE_DOMAIN=pdamcore.id
@@ -53,10 +54,14 @@ ENV NEXT_PUBLIC_ANALYTICS_ENABLED=$NEXT_PUBLIC_ANALYTICS_ENABLED
 ENV NEXT_PUBLIC_ANALYTICS_ID=$NEXT_PUBLIC_ANALYTICS_ID
 ENV NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID
 ENV NEXT_PUBLIC_PLAUSIBLE_DOMAIN=$NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+ENV LEAD_STORAGE_DIR=/app/data/leads
+ENV LEAD_FORM_MIN_AGE_MS=1200
+ENV LEAD_FORM_MAX_AGE_MS=86400000
 
-RUN apk add --no-cache wget \
-  && addgroup -S nodejs \
-  && adduser -S nextjs -G nodejs
+RUN groupadd --system --gid 1001 nodejs \
+  && useradd --system --uid 1001 --gid nodejs --home-dir /app --shell /usr/sbin/nologin nextjs \
+  && mkdir -p /app/data/leads \
+  && chown -R nextjs:nodejs /app/data
 
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
@@ -64,8 +69,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 EXPOSE 3000
+VOLUME ["/app/data"]
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:3000/api/health || exit 1
+  CMD node -e "fetch('http://127.0.0.1:3000/api/health').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
 CMD ["node", "server.js"]

@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, MessageCircle, Send } from "lucide-react";
 
 import { AnalyticsAnchor } from "@/components/analytics/analytics-link";
@@ -42,6 +42,11 @@ export function DemoRequestForm({
   );
   const errors = state.fieldErrors;
   const trackedSuccessId = useRef<string | null>(null);
+  const [formStartedAt, setFormStartedAt] = useState("");
+
+  useEffect(() => {
+    setFormStartedAt(Date.now().toString());
+  }, []);
 
   useEffect(() => {
     if (
@@ -61,6 +66,23 @@ export function DemoRequestForm({
   return (
     <form action={formAction} className="grid gap-5" noValidate>
       <input type="hidden" name="intent" value={intent} />
+      <input
+        type="hidden"
+        name="formStartedAt"
+        value={formStartedAt}
+        readOnly
+      />
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="demo-company-fax">Company fax</label>
+        <input
+          id="demo-company-fax"
+          name="company_fax"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          disabled={isPending}
+        />
+      </div>
 
       {state.status !== "idle" ? (
         <div

@@ -10,7 +10,7 @@ export const privacyHighlights = [
   "Website pdamcore.id hanya untuk marketing, edukasi, demo, proposal, dan kontak.",
   "Aplikasi operasional PDAMCore berada terpisah di app.pdamcore.id.",
   "Form publik tidak meminta password, token, data rekening pelanggan, atau data operasional PDAM.",
-  "Data kontak dipakai untuk menindaklanjuti demo, proposal, dan komunikasi produk PDAMCore.",
+  "Data kontak disimpan sebagai lead marketing untuk menindaklanjuti demo, proposal, dan komunikasi produk PDAMCore.",
 ] as const;
 
 export const privacySections: PrivacySection[] = [
@@ -32,6 +32,7 @@ export const privacySections: PrivacySection[] = [
       "Form demo dapat memproses nama, jabatan, instansi, nomor WhatsApp, email opsional, kebutuhan demo, preferensi jadwal, dan catatan tambahan.",
       "Form kontak dapat memproses nama, instansi, nomor WhatsApp, pesan, dan persetujuan penggunaan data kontak.",
       "WhatsApp CTA membuka pesan yang sudah diisi otomatis, tetapi pengiriman akhir tetap berada pada kontrol pengguna.",
+      "Website dapat memproses fingerprint teknis anonim seperti hash IP, user agent terbatas, referrer, waktu pengiriman, dan kode referensi untuk keamanan form dan audit lead.",
     ],
   },
   {
@@ -45,13 +46,14 @@ export const privacySections: PrivacySection[] = [
     ],
   },
   {
-    title: "Webhook, WhatsApp, dan pihak ketiga",
+    title: "Lead storage, webhook, WhatsApp, dan pihak ketiga",
     summary:
-      "Integrasi server-side bersifat opsional dan dikonfigurasi melalui environment variable.",
+      "Form publik disimpan server-side dan dapat diteruskan ke webhook internal bila dikonfigurasi.",
     points: [
-      "Jika webhook internal diaktifkan, data form dikirim ke endpoint yang dikonfigurasi oleh pengelola PDAMCore.",
-      "Jika webhook tidak aktif atau gagal, website menampilkan WhatsApp fallback agar pengguna dapat mengirim detail secara manual.",
-      "Analytics publik dapat digunakan untuk memahami trafik website tanpa meminta kredensial aplikasi operasional.",
+      "Data form disimpan sebagai file lead JSONL pada storage server yang dikonfigurasi oleh pengelola PDAMCore.",
+      "Jika webhook internal diaktifkan, data form juga dikirim ke endpoint yang dikonfigurasi oleh pengelola PDAMCore.",
+      "Jika webhook tidak aktif atau gagal, lead tetap tersimpan selama storage server tersedia dan website menampilkan WhatsApp fallback untuk respons tercepat.",
+      "Analytics publik seperti Plausible atau GA4 dapat digunakan untuk memahami trafik website tanpa meminta kredensial aplikasi operasional.",
     ],
   },
   {
@@ -62,6 +64,7 @@ export const privacySections: PrivacySection[] = [
       "Pengguna dapat meminta koreksi atau penghapusan data kontak yang dikirim melalui website publik.",
       "Permintaan penghapusan dapat dikirim melalui halaman kontak resmi PDAMCore.",
       "Data yang sudah menjadi bagian dari dokumen proposal atau komunikasi bisnis dapat mengikuti ketentuan arsip administrasi yang berlaku.",
+      "Log lead teknis dan backup storage dikelola sesuai kebutuhan tindak lanjut, keamanan, audit, dan kewajiban administrasi.",
     ],
   },
   {
@@ -71,6 +74,7 @@ export const privacySections: PrivacySection[] = [
     points: [
       "Website tidak menyimpan secret di kode sumber dan menggunakan environment variable untuk URL, nomor kontak, analytics, dan webhook.",
       "Form menggunakan validasi server-side agar input tidak diproses sebelum memenuhi format yang ditentukan.",
+      "Form dilindungi honeypot, timing guard, rate limit, dan hashing fingerprint agar spam berkurang tanpa menyimpan IP mentah.",
       "Jangan mengirim password, token, dump database, data pelanggan, atau dokumen rahasia melalui form publik.",
     ],
   },

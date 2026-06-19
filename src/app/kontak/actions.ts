@@ -2,6 +2,13 @@
 
 import { buildContactWhatsAppMessage, createWhatsAppUrl } from "@/lib/whatsapp";
 import {
+  createInitialDeliveryStatus,
+  getErrorMessage,
+  storeLead,
+} from "@/lib/server/lead-store";
+import { getRequestMetadata } from "@/lib/server/request-metadata";
+import { evaluateSubmissionGuard } from "@/lib/server/submission-guard";
+import {
   contactRequestSchema,
   normalizeIndonesianWhatsappNumber,
   toFieldErrors,
@@ -74,25 +81,76 @@ export async function submitContactRequest(
     ...result.data,
     whatsapp: normalizeIndonesianWhatsappNumber(result.data.whatsapp),
   };
-  const trackingId = createTrackingId();
+  const requestMetadata = await getRequestMetadata();
+  const guard = evaluateSubmissionGuard({
+    honeypot: valueOf(formData, "company_fax"),
+    formStartedAt: valueOf(formData, "formStartedAt"),
+    requestFingerprint: requestMetadata.requestFingerprint,
+    whatsapp: input.whatsapp,
+  });
   const whatsappUrl = createWhatsAppUrl(buildContactWhatsAppMessage(input));
+
+  if (!guard.allowed) {
+    if (guard.silent) {
+      return {
+        status: "success",
+        message: guard.message,
+        fieldErrors: {},
+      };
+    }
+
+    return {
+      status: "error",
+      message: guard.message,
+      fieldErrors: {},
+      whatsappUrl,
+    };
+  }
+
+  const trackingId = createTrackingId();
+  const submittedAt = new Date().toISOString();
+  const delivery = createInitialDeliveryStatus(Boolean(CONTACT_REQUEST_WEBHOOK_URL));
+
+  try {
+    await storeLead({
+      schemaVersion: 1,
+      trackingId,
+      source: "contact",
+      submittedAt,
+      request: requestMetadata,
+      data: input,
+    });
+    delivery.storage = "stored";
+  } catch (error) {
+    delivery.errors.push(`storage: ${getErrorMessage(error)}`);
+  }
 
   try {
     await sendContactWebhook({
       trackingId,
       source: "pdamcore-marketing-web",
-      submittedAt: new Date().toISOString(),
+      submittedAt,
       data: input,
+      request: requestMetadata,
     });
+    if (CONTACT_REQUEST_WEBHOOK_URL) {
+      delivery.webhook = "sent";
+    }
   } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : "Endpoint kontak tidak dapat dihubungi.";
+    delivery.webhook = "failed";
+    delivery.errors.push(`webhook: ${getErrorMessage(error)}`);
+  }
+
+  if (delivery.storage === "failed" && delivery.webhook !== "sent") {
+    console.error("pdamcore_contact_lead_delivery_failed", {
+      trackingId,
+      errors: delivery.errors,
+    });
 
     return {
       status: "error",
-      message: `${message} Data sudah tervalidasi; gunakan tombol WhatsApp untuk mengirim pesan kontak.`,
+      message:
+        "Data sudah tervalidasi, tetapi penyimpanan lead belum tersedia. Gunakan tombol WhatsApp untuk mengirim pesan kontak.",
       fieldErrors: {},
       trackingId,
       whatsappUrl,
@@ -101,9 +159,10 @@ export async function submitContactRequest(
 
   return {
     status: "success",
-    message: CONTACT_REQUEST_WEBHOOK_URL
-      ? "Pesan berhasil dikirim. Tim PDAMCore akan menindaklanjuti melalui WhatsApp."
-      : "Form kontak berhasil divalidasi. Untuk respons tercepat, lanjutkan melalui WhatsApp dengan pesan yang sudah terisi otomatis.",
+    message:
+      delivery.webhook === "failed"
+        ? "Pesan kontak sudah tersimpan. Notifikasi otomatis sedang tidak tersedia; gunakan WhatsApp untuk respons tercepat."
+        : "Pesan kontak berhasil diterima. Tim PDAMCore akan menindaklanjuti melalui WhatsApp.",
     fieldErrors: {},
     trackingId,
     whatsappUrl,

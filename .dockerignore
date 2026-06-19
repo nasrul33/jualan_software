@@ -7,6 +7,8 @@
 .codex-repos
 node_modules
 coverage
+.data
+data
 dist
 out
 Dockerfile
