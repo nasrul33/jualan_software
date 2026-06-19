@@ -1,0 +1,37 @@
+---
+title: "Pentingnya Audit Trail pada Sistem Informasi PDAM"
+category: "Audit"
+---
+
+Audit trail adalah jejak digital yang menjawab pertanyaan dasar pemeriksaan: siapa melakukan apa, kapan dilakukan, dari modul mana, dan apa dampaknya terhadap transaksi. Pada PDAM, audit trail penting karena data operasional langsung memengaruhi tagihan, piutang, kas/bank, jurnal, dan laporan.
+
+## Area yang Wajib Berjejak
+
+Tidak semua aktivitas memiliki risiko yang sama. Namun beberapa area wajib memiliki jejak yang rapi:
+
+- Perubahan data pelanggan dan sambungan.
+- Koreksi baca meter dan tagih ulang.
+- Penerbitan, void, atau koreksi invoice.
+- Pembayaran, settlement, overpay, dan pembatalan transaksi.
+- Posting jurnal, reversal, period lock, dan laporan.
+- Penghapusan piutang, voucher pengeluaran, dan perubahan master penting.
+
+Tanpa jejak ini, pemeriksaan akan bergantung pada ingatan pengguna atau dokumen manual yang sulit diverifikasi.
+
+## Audit Trail Bukan Hanya Log
+
+Log biasa hanya mencatat pesan sistem. Audit trail yang baik mencatat konteks bisnis. Contohnya, ketika ada koreksi baca meter, sistem perlu menyimpan bacaan lama, bacaan koreksi, alasan, pemohon, penyetuju, waktu proses, dan dampak ke invoice.
+
+Pada akuntansi, jurnal posted perlu diperlakukan sebagai data final. Jika ada kesalahan, koreksi sebaiknya memakai reversal agar jurnal lama tetap ada dan jurnal koreksi memiliki alasan yang jelas.
+
+## Hubungan Audit Trail dan SoD
+
+Segregation of Duties atau SoD membantu memastikan satu orang tidak memegang semua fungsi kritis. Misalnya, kasir tidak perlu mengakses GL, akuntan tidak menjadi satu-satunya poster, dan posting jurnal dilakukan melalui kontrol yang jelas.
+
+Audit trail memperkuat SoD karena setiap tindakan penting dapat dilihat kembali. Jika ada pelanggaran akses atau perubahan tidak biasa, SPI memiliki dasar pemeriksaan yang lebih kuat.
+
+## Nilai untuk SPI dan Manajemen
+
+Audit trail membuat proses pemeriksaan lebih cepat, karena bukti transaksi tidak perlu dikumpulkan dari banyak sumber. Manajemen juga mendapat keyakinan bahwa perubahan data penting tidak terjadi diam-diam.
+
+Untuk PDAM yang mengelola data pelanggan, penerimaan, dan laporan keuangan, audit trail bukan fitur tambahan. Ia adalah bagian dari kontrol internal.

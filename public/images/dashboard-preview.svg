@@ -1,0 +1,49 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Preview dashboard PDAMCore</title>
+  <desc id="desc">Mockup dashboard billing, kasir, dan akuntansi PDAMCore</desc>
+  <rect width="1440" height="900" fill="#DFF3F8"/>
+  <rect x="90" y="70" width="1260" height="760" rx="24" fill="#FFFFFF" stroke="#B6D8E2" stroke-width="2"/>
+  <rect x="90" y="70" width="260" height="760" rx="24" fill="#0F5167"/>
+  <rect x="120" y="110" width="168" height="34" rx="8" fill="#FFFFFF" fill-opacity="0.96"/>
+  <circle cx="136" cy="127" r="9" fill="#0EA5E9"/>
+  <rect x="156" y="119" width="106" height="16" rx="4" fill="#0F172A"/>
+  <rect x="122" y="190" width="188" height="42" rx="8" fill="#FFFFFF" fill-opacity="0.16"/>
+  <rect x="122" y="250" width="154" height="16" rx="4" fill="#B9E9F5"/>
+  <rect x="122" y="292" width="176" height="16" rx="4" fill="#B9E9F5"/>
+  <rect x="122" y="334" width="132" height="16" rx="4" fill="#B9E9F5"/>
+  <rect x="122" y="376" width="164" height="16" rx="4" fill="#B9E9F5"/>
+  <rect x="390" y="118" width="380" height="34" rx="8" fill="#0F172A"/>
+  <rect x="390" y="172" width="180" height="24" rx="6" fill="#0F766E"/>
+  <rect x="1138" y="118" width="150" height="40" rx="8" fill="#0284C7"/>
+  <rect x="390" y="232" width="210" height="130" rx="12" fill="#F0F9FF" stroke="#BAE6FD"/>
+  <rect x="630" y="232" width="210" height="130" rx="12" fill="#F0FDFA" stroke="#99F6E4"/>
+  <rect x="870" y="232" width="210" height="130" rx="12" fill="#FFFBEB" stroke="#FDE68A"/>
+  <rect x="1110" y="232" width="178" height="130" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <rect x="416" y="260" width="82" height="14" rx="4" fill="#075985"/>
+  <rect x="416" y="296" width="120" height="30" rx="6" fill="#0F172A"/>
+  <rect x="656" y="260" width="92" height="14" rx="4" fill="#0F766E"/>
+  <rect x="656" y="296" width="118" height="30" rx="6" fill="#0F172A"/>
+  <rect x="896" y="260" width="106" height="14" rx="4" fill="#92400E"/>
+  <rect x="896" y="296" width="126" height="30" rx="6" fill="#0F172A"/>
+  <rect x="1136" y="260" width="82" height="14" rx="4" fill="#334155"/>
+  <rect x="1136" y="296" width="96" height="30" rx="6" fill="#0F172A"/>
+  <rect x="390" y="404" width="560" height="330" rx="16" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="420" y="436" width="160" height="20" rx="5" fill="#0F172A"/>
+  <rect x="420" y="494" width="480" height="2" fill="#E2E8F0"/>
+  <rect x="420" y="548" width="480" height="2" fill="#E2E8F0"/>
+  <rect x="420" y="602" width="480" height="2" fill="#E2E8F0"/>
+  <rect x="420" y="656" width="480" height="2" fill="#E2E8F0"/>
+  <path d="M420 662C465 626 498 635 540 590C586 540 620 554 670 500C716 450 760 468 802 430C840 394 875 395 914 376" stroke="#0284C7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M420 686C470 656 510 670 548 640C592 606 624 626 674 584C718 548 759 565 804 530C846 497 876 508 918 482" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
+  <rect x="990" y="404" width="298" height="330" rx="16" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="1020" y="436" width="146" height="20" rx="5" fill="#0F172A"/>
+  <rect x="1020" y="486" width="218" height="48" rx="8" fill="#F8FAFC"/>
+  <rect x="1020" y="552" width="218" height="48" rx="8" fill="#F8FAFC"/>
+  <rect x="1020" y="618" width="218" height="48" rx="8" fill="#F8FAFC"/>
+  <rect x="1042" y="504" width="112" height="12" rx="4" fill="#334155"/>
+  <rect x="1042" y="570" width="130" height="12" rx="4" fill="#334155"/>
+  <rect x="1042" y="636" width="98" height="12" rx="4" fill="#334155"/>
+  <rect x="1186" y="500" width="34" height="20" rx="10" fill="#14B8A6"/>
+  <rect x="1186" y="566" width="34" height="20" rx="10" fill="#F59E0B"/>
+  <rect x="1186" y="632" width="34" height="20" rx="10" fill="#0EA5E9"/>
+</svg>

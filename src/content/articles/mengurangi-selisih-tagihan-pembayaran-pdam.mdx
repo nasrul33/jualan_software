@@ -1,0 +1,41 @@
+---
+title: "Cara Mengurangi Selisih Tagihan dan Pembayaran PDAM"
+category: "Kasir"
+---
+
+Selisih tagihan dan pembayaran biasanya tidak muncul di akhir proses. Selisih sering dimulai dari data sumber yang tidak sinkron, lalu membesar saat billing, kasir, piutang, dan laporan berjalan sendiri-sendiri.
+
+## Sumber Selisih yang Umum
+
+Beberapa penyebab selisih yang sering terjadi di PDAM:
+
+- Data pelanggan atau sambungan tidak sama antara hublang, meter, dan kasir.
+- Stand meter belum valid tetapi sudah masuk billing.
+- Tarif atau komponen rekening berubah tanpa riwayat versi.
+- Pembayaran diterima tanpa referensi invoice yang kuat.
+- Rekap kasir tidak langsung mengubah status piutang.
+- Koreksi atau void tidak meninggalkan jejak yang mudah diaudit.
+
+Mengurangi selisih berarti memperbaiki kontrol dari awal, bukan hanya merekonsiliasi di akhir bulan.
+
+## Gunakan Invoice sebagai Sumber Status
+
+Status tagihan perlu berasal dari invoice. Ketika invoice diterbitkan, statusnya issued. Ketika dibayar sebagian, statusnya partial. Ketika lunas, statusnya paid. Jika dibatalkan, statusnya void dengan alasan yang jelas.
+
+Kasir tidak boleh hanya membuat rekap penerimaan. Kasir perlu mengalokasikan pembayaran ke invoice yang tepat.
+
+## Pastikan Settlement Idempoten
+
+Dalam sistem pembayaran digital, request yang sama bisa terkirim lebih dari sekali. Tanpa idempotency key, pembayaran ganda bisa tercatat dan membuat piutang menjadi tidak wajar.
+
+Settlement idempoten membantu memastikan satu transaksi pembayaran hanya diproses satu kali, walaupun kanal pembayaran atau webhook mengirim ulang data yang sama.
+
+## Rekonsiliasi Kas/Bank Secara Berkala
+
+Rekonsiliasi kas/bank perlu membandingkan penerimaan kasir, payment channel, bank statement, dan jurnal. Jika rekonsiliasi dilakukan rutin, selisih lebih cepat ditemukan dan tidak menumpuk sampai tutup periode.
+
+## Gunakan Audit Trail untuk Koreksi
+
+Selisih tidak selalu bisa dihindari, tetapi koreksi harus bisa dipertanggungjawabkan. Setiap koreksi baca meter, credit memo, void invoice, reversal jurnal, atau penghapusan piutang perlu memiliki alasan dan aktor yang jelas.
+
+Dengan kontrol ini, PDAM dapat mengurangi selisih tagihan dan pembayaran secara sistematis, bukan hanya lewat pemeriksaan manual berulang.

@@ -1,0 +1,34 @@
+---
+title: "Digitalisasi PDAM dari Baca Meter sampai Laporan Keuangan"
+category: "Digitalisasi"
+---
+
+Digitalisasi PDAM tidak cukup dengan memindahkan form kertas ke layar. Nilai utamanya muncul ketika data dari satu proses menjadi dasar proses berikutnya, mulai dari pelanggan sampai laporan keuangan.
+
+## Tahap 1: Data Pelanggan dan Sambungan
+
+Fondasi digitalisasi adalah data pelanggan dan sambungan langganan. Nomor pelanggan, meter, alamat, zona tarif, status layanan, dan riwayat perubahan harus menjadi sumber data yang stabil.
+
+Jika data pelanggan tidak rapi, baca meter, billing, kasir, piutang, dan laporan akan ikut terganggu.
+
+## Tahap 2: Baca Meter dan Validasi
+
+Pencatatan meter harus menangkap stand sebelumnya, stand sekarang, konsumsi, tanggal baca, petugas, dan anomali. Pemakaian yang terlalu tinggi, terlalu rendah, negatif, atau nol perlu ditandai sebelum masuk billing.
+
+Koreksi baca meter juga perlu workflow. Bacaan asli tidak seharusnya hilang begitu saja. Sistem perlu menyimpan alasan, pemohon, penyetuju, dan bacaan pengganti.
+
+## Tahap 3: Billing dan Kasir
+
+Setelah konsumsi valid, billing menghitung tagihan berdasarkan tarif yang berlaku. Tarif perlu versioned, sehingga tagihan periode lama tetap dapat dijelaskan.
+
+Kasir kemudian menerima pembayaran. Status invoice berubah menjadi partial atau paid sesuai alokasi pembayaran. Jika ada overpay, nilai tersebut perlu tercatat dengan benar.
+
+## Tahap 4: Akuntansi dan Laporan
+
+Transaksi operasional perlu menghasilkan dampak akuntansi. Invoice membentuk piutang dan pendapatan. Pembayaran membentuk kas/bank dan mengurangi piutang. Koreksi memakai credit memo atau reversal.
+
+Dengan posted ledger, PDAM dapat menyusun laporan operasional dan laporan SAK EP dengan lebih tertib.
+
+## Digitalisasi yang Benar
+
+Digitalisasi yang benar bukan sekadar banyak menu. Digitalisasi yang benar adalah alur data yang konsisten, role yang jelas, audit trail yang rapi, dan laporan yang bisa ditelusuri sampai transaksi sumber.

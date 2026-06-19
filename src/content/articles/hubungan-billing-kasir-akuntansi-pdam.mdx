@@ -1,0 +1,40 @@
+---
+title: "Hubungan Billing, Kasir, dan Akuntansi pada PDAM"
+category: "Akuntansi"
+---
+
+Billing, kasir, dan akuntansi adalah satu rantai. Billing menghasilkan invoice dan piutang. Kasir menerima pembayaran dan mengurangi piutang. Akuntansi mencatat dampaknya ke kas/bank, jurnal, buku besar, dan laporan.
+
+Jika tiga area ini tidak terhubung, PDAM akan menghabiskan banyak waktu untuk menjelaskan selisih.
+
+## Dari Invoice ke Piutang
+
+Ketika invoice diterbitkan, sistem seharusnya membentuk dasar piutang. Pada alur yang lebih kuat, invoice memiliki referensi pelanggan, sambungan, periode, tarif, komponen rekening, total, status, dan jurnal sumber.
+
+Piutang bukan angka rekap manual. Piutang adalah konsekuensi dari invoice yang sudah diterbitkan dan belum dibayar.
+
+## Dari Pembayaran ke Kas/Bank
+
+Kasir menerima pembayaran atas invoice tertentu. Pembayaran bisa penuh, sebagian, atau lebih bayar. Sistem perlu mengalokasikan nilai yang diterima ke tagihan yang benar dan mencatat overpay sebagai deposit bila diperlukan.
+
+Settlement yang baik harus idempoten. Artinya, request pembayaran yang sama tidak boleh menghasilkan transaksi ganda. Ini penting untuk kasir loket, QRIS, virtual account, PPOB, maupun portal pelanggan.
+
+## Dari Settlement ke Jurnal
+
+Setelah pembayaran valid, dampak akuntansinya perlu jelas. Pola sederhana untuk pembayaran tagihan air adalah:
+
+- Debit kas atau bank.
+- Kredit piutang pelanggan.
+
+Untuk invoice yang diterbitkan, pola umumnya:
+
+- Debit piutang.
+- Kredit pendapatan air, abonemen, biaya meter, denda, atau komponen lain sesuai konfigurasi akun.
+
+Dengan pola ini, laporan kasir, piutang, dan buku besar memiliki hubungan yang dapat ditelusuri.
+
+## Mengapa Ini Penting untuk Laporan
+
+Laporan keuangan yang baik tidak boleh hanya berasal dari rekap spreadsheet. Ia perlu dibangun dari posted ledger dan transaksi sumber yang jelas. Ketika billing, kasir, dan akuntansi terhubung, angka DRD, piutang, penerimaan, dan GL lebih mudah direkonsiliasi.
+
+Hubungan ini juga membantu PDAM mempercepat tutup periode, menyusun laporan SAK EP, dan menjawab pertanyaan auditor.

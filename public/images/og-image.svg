@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">PDAMCore</title>
+  <desc id="desc">Sistem Informasi Akuntansi dan Billing PDAM</desc>
+  <rect width="1200" height="630" fill="#083344"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#FFFFFF" fill-opacity="0.96"/>
+  <rect x="112" y="116" width="64" height="64" rx="12" fill="#0369A1"/>
+  <path d="M144 128C132.8 141.6 125 152.8 125 163.2C125 175.2 134 184 144 184C154 184 163 175.2 163 163.2C163 152.8 155.2 141.6 144 128Z" fill="#FFFFFF"/>
+  <text x="200" y="161" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">PDAMCore</text>
+  <text x="112" y="267" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Sistem Informasi Akuntansi &amp; Billing PDAM</text>
+  <text x="112" y="340" fill="#334155" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">Pelanggan, baca meter, tagihan, pembayaran, kas/bank, jurnal, laporan, dan audit trail dalam satu platform.</text>
+  <rect x="112" y="424" width="222" height="58" rx="10" fill="#0284C7"/>
+  <text x="142" y="462" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Jadwalkan Demo</text>
+  <rect x="364" y="424" width="208" height="58" rx="10" fill="#0F766E"/>
+  <text x="392" y="462" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Hubungi WhatsApp</text>
+</svg>
