@@ -55,6 +55,15 @@ Set `LEAD_PRIVACY_SALT` dengan secret acak yang panjang agar hash IP/fingerprint
 tidak mudah ditebak. Backup volume `/app/data` secara berkala jika Docker Compose
 menjadi runtime production utama.
 
+Siapkan file environment production di server:
+
+```bash
+cp .env.production.example .env.production
+sed -i "s/^LEAD_PRIVACY_SALT=.*/LEAD_PRIVACY_SALT=$(openssl rand -hex 32)/" .env.production
+```
+
+Jangan commit `.env.production`; file tersebut sudah diabaikan oleh `.gitignore`.
+
 ## Local Quality Gates
 
 Jalankan sebelum membuat image atau deploy:
@@ -111,11 +120,20 @@ docker run --rm -p 3000:3000 \
 ## Docker Compose
 
 ```bash
-docker compose up -d --build
+docker compose --env-file .env.production up -d --build
 docker compose ps
 curl -f http://127.0.0.1:3000/api/health
 docker compose exec pdamcore-marketing-web ls -la /app/data/leads
 ```
+
+`docker-compose.yml` sengaja mewajibkan `LEAD_PRIVACY_SALT`. Deploy akan gagal
+sebelum container berjalan jika secret ini kosong atau tidak diset.
+
+Respons `/api/health` harus memuat `status: "ok"`, check
+`leadPrivacySalt.status: "ok"`, dan `leadStorage.status: "ok"`. Jika secret
+tidak valid atau storage tidak writable, endpoint akan mengembalikan HTTP `503`
+agar reverse proxy/orchestrator tidak menganggap instance siap menerima lead
+form.
 
 Gunakan reverse proxy seperti NGINX, Caddy, Traefik, atau load balancer cloud
 untuk TLS dan domain `pdamcore.id`.
@@ -144,7 +162,9 @@ Pipeline harus gagal jika salah satu gate gagal.
 - Verifikasi `/`, `/fitur`, `/solusi`, `/edukasi`, `/demo`, `/kontak`, `/privacy`.
 - Verifikasi `/login` redirect ke `NEXT_PUBLIC_APP_URL`.
 - Verifikasi `/sitemap.xml` dan `/robots.txt`.
-- Verifikasi `/api/health` mengembalikan status `ok`.
+- Verifikasi `/api/health` mengembalikan status `ok`,
+  `leadPrivacySalt.status` bernilai `ok`, dan `leadStorage.status` bernilai
+  `ok`.
 - Verifikasi form demo/kontak menulis file JSONL di `LEAD_STORAGE_DIR`.
 - Verifikasi analytics Plausible/GA sesuai kebijakan internal.
 

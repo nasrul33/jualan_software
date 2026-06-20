@@ -1,4 +1,5 @@
-import { appendFile, mkdir } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
+import { appendFile, mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import type { ContactRequestInput, DemoRequestInput } from "@/lib/validations";
@@ -33,7 +34,7 @@ export interface StoredContactLead extends StoredLeadBase {
 
 export type StoredLead = StoredDemoLead | StoredContactLead;
 
-function getLeadStorageDir(): string {
+export function getLeadStorageDir(): string {
   if (process.env.LEAD_STORAGE_DIR) {
     return process.env.LEAD_STORAGE_DIR;
   }
@@ -56,6 +57,17 @@ export async function storeLead(lead: StoredLead): Promise<void> {
 
   await mkdir(storageDir, { recursive: true });
   await appendFile(filePath, line, { encoding: "utf8" });
+}
+
+export async function assertLeadStorageWritable(): Promise<string> {
+  const storageDir = getLeadStorageDir();
+  const probePath = join(storageDir, `.healthcheck-${randomUUID()}.tmp`);
+
+  await mkdir(storageDir, { recursive: true });
+  await writeFile(probePath, "ok", { encoding: "utf8", flag: "wx" });
+  await rm(probePath, { force: true });
+
+  return storageDir;
 }
 
 export function createInitialDeliveryStatus(

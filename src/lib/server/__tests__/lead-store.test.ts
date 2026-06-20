@@ -1,10 +1,14 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
-import { storeLead, type StoredContactLead } from "@/lib/server/lead-store";
+import {
+  assertLeadStorageWritable,
+  storeLead,
+  type StoredContactLead,
+} from "@/lib/server/lead-store";
 
 let storageDir = "";
 
@@ -50,5 +54,13 @@ describe("lead store", () => {
     );
 
     expect(fileContent.trim()).toBe(JSON.stringify(lead));
+  });
+
+  it("verifies lead storage is writable without leaving probe files", async () => {
+    storageDir = await mkdtemp(join(tmpdir(), "pdamcore-leads-"));
+    process.env.LEAD_STORAGE_DIR = storageDir;
+
+    await expect(assertLeadStorageWritable()).resolves.toBe(storageDir);
+    await expect(readdir(storageDir)).resolves.toEqual([]);
   });
 });
