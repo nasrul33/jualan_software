@@ -15,7 +15,7 @@ import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export function HeroSection() {
   const whatsappUrl = createWhatsAppUrl(
-    "Halo PDAMCore, saya ingin menjadwalkan demo sistem operasional, billing, dan akuntansi PDAM.",
+    "Halo PDAMCore, saya ingin menjadwalkan demo alur billing-to-accounting untuk PDAM.",
   );
 
   return (
@@ -36,9 +36,9 @@ export function HeroSection() {
             {siteConfig.tagline}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-sky-50 sm:text-xl">
-            PDAMCore membantu PDAM mengelola pelanggan, sambungan, baca meter,
-            tarif, DRD, pembayaran, piutang, kas/bank, jurnal, laporan SAK EP,
-            portal pelanggan, dan audit trail dalam satu sistem yang tertib,
+            PDAMCore membantu PDAM menghubungkan pelanggan, baca meter, tarif,
+            DRD, pembayaran kasir, piutang, kas/bank, jurnal, GL, laporan SAK
+            EP, portal pelanggan, dan audit trail dalam satu sistem yang tertib,
             aman, dan mudah ditelusuri.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">

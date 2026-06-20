@@ -12,8 +12,8 @@ export function FeatureSection() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow="Modul Utama"
-            title="Fitur inti untuk revenue cycle, kasir, akuntansi, dan audit PDAM"
-            description="Modul disusun mengikuti alur kerja PDAM agar data pelanggan, sambungan, meter, tarif, DRD, pembayaran, jurnal, dan laporan tetap saling terhubung."
+            title="Modul inti untuk menghubungkan revenue cycle ke akuntansi"
+            description="Modul disusun mengikuti alur kerja PDAM agar data pelanggan, meter, tarif, DRD, pembayaran, piutang, kas/bank, jurnal, GL, dan laporan tetap saling terhubung."
           />
           <Link
             href="/fitur"

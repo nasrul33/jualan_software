@@ -1,4 +1,5 @@
 import type {
+  AccountingDifferentiator,
   DashboardInsight,
   HomepageAudience,
   HomepageMetric,
@@ -9,22 +10,57 @@ import type {
 
 export const homepageProblems: ProblemItem[] = [
   {
-    title: "Siklus pelanggan sampai kas/bank sering terputus",
+    title: "DRD, kasir, dan GL sering punya jejak berbeda",
     description:
-      "Data pelanggan, sambungan, baca meter, tarif, tagihan, kasir, piutang, dan bank kerap berjalan dalam rekap berbeda.",
-    risk: "Risiko selisih DRD, piutang, penerimaan, dan setoran meningkat.",
+      "Tagihan, status lunas, rekap kasir, piutang, kas/bank, dan buku besar kerap ditutup dari sumber data yang berbeda.",
+    risk: "Risiko selisih DRD, penerimaan, piutang, dan laporan keuangan meningkat.",
   },
   {
-    title: "Akuntansi PDAM butuh kontrol yang sesuai siklus transaksi",
+    title: "Akuntansi butuh data sumber, bukan rekap ulang",
     description:
-      "Jurnal, buku besar, laporan SAK EP, period lock, dan reversal membutuhkan data sumber yang rapi dan dapat diverifikasi.",
-    risk: "Laporan terlambat, angka antar laporan rawan berbeda, dan audit menjadi lebih berat.",
+      "Jurnal, buku besar, laporan SAK EP, period lock, dan reversal membutuhkan referensi transaksi yang rapi dan dapat diverifikasi.",
+    risk: "Laporan terlambat, angka antar laporan rawan berbeda, dan proses audit menjadi lebih berat.",
   },
   {
     title: "Koreksi, void, dan aktivitas penting sulit ditelusuri",
     description:
       "Koreksi baca meter, tagih ulang, pembayaran, penghapusan piutang, dan jurnal perlu jejak audit yang jelas.",
     risk: "Akuntabilitas melemah dan kontrol SPI tidak punya bukti digital yang kuat.",
+  },
+];
+
+export const accountingDifferentiators: AccountingDifferentiator[] = [
+  {
+    title: "Billing-to-accounting traceability",
+    description:
+      "Setiap angka penting dapat ditelusuri dari baca meter, DRD, pembayaran, piutang, kas/bank, jurnal, sampai GL.",
+    proof:
+      "Referensi transaksi sumber menjaga hubungan invoice, receipt, kas/bank, jurnal, dan laporan.",
+    icon: "Workflow",
+  },
+  {
+    title: "Jurnal bukan input ulang terpisah",
+    description:
+      "Transaksi operasional dapat menjadi dasar auto-journal sehingga akuntansi tidak bergantung pada rekap manual.",
+    proof:
+      "Double-entry, posting, reversal, dan period lock menjaga integritas angka setelah periode ditutup.",
+    icon: "WalletCards",
+  },
+  {
+    title: "Kontrol selisih lebih cepat terlihat",
+    description:
+      "DRD, pembayaran kasir, piutang, setoran, dan buku besar dibaca sebagai satu rantai kontrol.",
+    proof:
+      "Tim dapat mengecek sumber selisih tanpa membandingkan banyak spreadsheet antar bagian.",
+    icon: "ReceiptText",
+  },
+  {
+    title: "Siap untuk audit dan laporan PDAM",
+    description:
+      "Audit trail, SoD, hash-chain, dan laporan SAK EP membantu SPI, keuangan, dan manajemen memeriksa angka final.",
+    proof:
+      "Aktivitas penting, koreksi, void, reversal, dan jurnal posted memiliki jejak pemeriksaan.",
+    icon: "ShieldCheck",
   },
 ];
 

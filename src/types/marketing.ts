@@ -51,6 +51,13 @@ export interface ProblemItem {
   risk: string;
 }
 
+export interface AccountingDifferentiator {
+  title: string;
+  description: string;
+  proof: string;
+  icon: IconName;
+}
+
 export interface WorkflowStep {
   step: string;
   title: string;

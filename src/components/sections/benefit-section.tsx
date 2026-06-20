@@ -8,8 +8,8 @@ export function BenefitSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Manfaat Bisnis"
-          title="Lebih tertib untuk operasional, lebih kuat untuk akuntansi dan audit"
-          description="PDAMCore membantu hublang, meter, kasir, keuangan, SPI, IT, dan manajemen bekerja di atas data yang lebih konsisten dan tertelusur."
+          title="Diferensiasi yang terasa di kasir, keuangan, dan audit"
+          description="PDAMCore membantu hublang, meter, kasir, keuangan, SPI, IT, dan manajemen bekerja di atas angka yang sama dari transaksi sumber sampai laporan."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit) => (

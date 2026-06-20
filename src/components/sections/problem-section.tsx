@@ -10,8 +10,8 @@ export function ProblemSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Masalah yang Diselesaikan"
-          title="Ketika data PDAM tersebar, DRD, piutang, dan GL ikut melemah"
-          description="PDAMCore dirancang untuk menyatukan alur hublang, meter, tarif, billing, kasir, keuangan, SPI, dan manajemen yang selama ini sering terpisah antar bagian."
+          title="Masalah utama PDAM bukan hanya billing, tetapi angka yang tidak tersambung ke akuntansi"
+          description="Ketika DRD, kasir, piutang, kas/bank, jurnal, dan laporan memakai rekap berbeda, tim harus menghabiskan waktu untuk mencari selisih. PDAMCore menyatukan alur itu sejak transaksi sumber."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {homepageProblems.map((problem) => (

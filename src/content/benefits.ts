@@ -2,21 +2,21 @@ import type { BenefitItem } from "@/types/marketing";
 
 export const benefits: BenefitItem[] = [
   {
-    title: "Revenue cycle PDAM lebih menyatu",
+    title: "DRD sampai GL lebih menyatu",
     description:
-      "Pelanggan, sambungan, baca meter, tarif, tagihan, kasir, piutang, dan kas/bank berada dalam alur data yang sama.",
+      "Baca meter, tarif, DRD, kasir, piutang, kas/bank, jurnal, dan buku besar berada dalam alur data yang sama.",
     icon: "Workflow",
   },
   {
-    title: "Kontrol akuntansi lebih kuat",
+    title: "Posting akuntansi lebih terkendali",
     description:
-      "Jurnal posted, buku besar, period lock, reversal, dan laporan SAK EP membantu keuangan menjaga jejak transaksi.",
+      "Double-entry, jurnal posted, reversal, period lock, dan GL membantu keuangan menjaga angka final.",
     icon: "ShieldCheck",
   },
   {
-    title: "Laporan operasional dan keuangan lebih siap",
+    title: "Rekonsiliasi lebih cepat",
     description:
-      "DRD, piutang, penerimaan, kas/bank, buku besar, laporan keuangan, dan ringkasan manajemen lebih mudah diverifikasi.",
+      "Selisih DRD, penerimaan, piutang, kas/bank, dan laporan lebih mudah dicari dari referensi transaksi.",
     icon: "BarChart3",
   },
   {

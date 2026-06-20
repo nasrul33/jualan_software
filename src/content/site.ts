@@ -3,9 +3,9 @@ import type { CtaLink } from "@/types/marketing";
 
 export const siteConfig = {
   name: "PDAMCore",
-  tagline: "Sistem Informasi Operasional, Billing, dan Akuntansi PDAM yang Siap Audit",
+  tagline: "Billing dan Akuntansi PDAM dalam Satu Alur yang Tertelusur",
   description:
-    "PDAMCore membantu PDAM/Perumdam mengelola pelanggan, sambungan, baca meter, tarif, billing, kasir, piutang, kas/bank, jurnal, laporan SAK EP, dan audit trail dalam satu platform yang tertib dan tertelusur.",
+    "PDAMCore menghubungkan pelanggan, baca meter, DRD, kasir, piutang, kas/bank, jurnal, GL, laporan SAK EP, dan audit trail PDAM dalam satu platform billing-to-accounting yang tertib dan tertelusur.",
   url: SITE_URL,
   appUrl: APP_URL,
   email: CONTACT_EMAIL,

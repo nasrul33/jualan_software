@@ -12,9 +12,9 @@ import { features } from "@/content/features";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Fitur PDAMCore",
+  title: "Fitur Billing dan Akuntansi PDAMCore",
   description:
-    "Daftar modul PDAMCore untuk pelanggan, sambungan, baca meter, tarif, billing, kasir, piutang, kas/bank, akuntansi, laporan SAK EP, portal, NRW, aset, RKAP, gudang, voucher, dan audit trail PDAM.",
+    "Daftar modul PDAMCore untuk menghubungkan pelanggan, baca meter, DRD, kasir, piutang, kas/bank, jurnal, GL, laporan SAK EP, portal, NRW, aset, RKAP, gudang, voucher, dan audit trail PDAM.",
   path: "/fitur",
   keywords: [
     "fitur aplikasi PDAM",
@@ -35,8 +35,8 @@ export default function FiturPage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading
               eyebrow="Fitur PDAMCore"
-              title="Modul lengkap untuk operasional, revenue, keuangan, laporan, dan audit trail"
-              description="Setiap modul dirancang mengikuti kebutuhan PDAM/Perumdam agar data pelanggan, sambungan, meter, tarif, DRD, pembayaran, piutang, kas/bank, jurnal, dan laporan tetap konsisten."
+              title="Modul lengkap untuk billing, kasir, akuntansi, laporan, dan audit trail"
+              description="Setiap modul dirancang mengikuti kebutuhan PDAM/Perumdam agar data pelanggan, meter, tarif, DRD, pembayaran, piutang, kas/bank, jurnal, GL, dan laporan tetap konsisten."
             />
             <Link
               href="/demo"
@@ -107,7 +107,7 @@ export default function FiturPage() {
         </div>
       </section>
       <FinalCtaSection
-        title="Ingin melihat modul PDAMCore sesuai alur kerja PDAM Anda?"
+        title="Ingin melihat alur billing-to-accounting PDAMCore?"
         description="Tim PDAMCore dapat menyiapkan sesi demo berdasarkan kebutuhan hublang, kasir, keuangan, SPI, dan manajemen."
       />
     </>

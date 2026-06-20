@@ -67,7 +67,7 @@ export const features: FeatureModule[] = [
     shortTitle: "Billing",
     icon: "ReceiptText",
     description:
-      "Menerbitkan invoice/DRD dari data pelanggan, sambungan, baca meter, tarif, komponen rekening, dan periode yang sudah tervalidasi.",
+      "Menerbitkan invoice/DRD dari data pelanggan, baca meter, tarif, komponen rekening, dan periode yang sudah tervalidasi sebagai sumber piutang dan jurnal.",
     problem:
       "Penerbitan tagihan yang tidak idempoten dan tidak terhubung ke data sumber rawan duplikasi, koreksi sulit, dan piutang tidak akurat.",
     capabilities: [
@@ -78,7 +78,7 @@ export const features: FeatureModule[] = [
     benefits: [
       "DRD lebih konsisten",
       "Piutang lebih akurat",
-      "Koreksi rekening lebih tertelusur",
+      "Alur ke akuntansi lebih jelas",
     ],
   },
   {
@@ -87,7 +87,7 @@ export const features: FeatureModule[] = [
     shortTitle: "Kasir",
     icon: "CreditCard",
     description:
-      "Mencatat pembayaran counter, QRIS, virtual account, PPOB, alokasi partial/full, overpay, struk, dan rekap kasir.",
+      "Mencatat pembayaran counter, QRIS, virtual account, PPOB, alokasi partial/full, overpay, struk, rekap kasir, dan referensi kas/bank.",
     problem:
       "Penerimaan yang tidak terkunci ke invoice dapat menimbulkan status lunas yang terlambat, pembayaran ganda, atau selisih kasir.",
     capabilities: [
@@ -98,7 +98,7 @@ export const features: FeatureModule[] = [
     benefits: [
       "Status tagihan lebih akurat",
       "Rekap kasir lebih cepat",
-      "Risiko pembayaran ganda berkurang",
+      "Penerimaan lebih mudah direkonsiliasi",
     ],
   },
   {
@@ -127,7 +127,7 @@ export const features: FeatureModule[] = [
     shortTitle: "Kas & Bank",
     icon: "Landmark",
     description:
-      "Menghubungkan penerimaan, pengeluaran, rekening bank, settlement, bank statement, dan rekonsiliasi dengan jurnal.",
+      "Menghubungkan penerimaan, pengeluaran, rekening bank, settlement, bank statement, rekonsiliasi, dan jurnal sumber.",
     problem:
       "Kas/bank yang berjalan terpisah dari pembayaran dan jurnal membuat rekonsiliasi harian maupun bulanan memakan waktu.",
     capabilities: [
@@ -147,7 +147,7 @@ export const features: FeatureModule[] = [
     shortTitle: "Akuntansi",
     icon: "WalletCards",
     description:
-      "Mengelola CoA, jurnal manual dan auto-jurnal, posting, reversal, period lock, general ledger, dan subledger AR.",
+      "Mengelola CoA, auto-journal dari transaksi sumber, jurnal manual, posting, reversal, period lock, general ledger, dan subledger AR.",
     problem:
       "Jurnal yang tidak terhubung ke transaksi sumber membuat laporan sulit diverifikasi dan koreksi berisiko mengubah data final.",
     capabilities: [
@@ -156,7 +156,7 @@ export const features: FeatureModule[] = [
       "Buku besar dari posted ledger, bukan dari transaksi mentah",
     ],
     benefits: [
-      "Kontrol akuntansi lebih kuat",
+      "Traceability billing-to-accounting lebih kuat",
       "Jejak transaksi lebih jelas",
       "Laporan lebih siap diaudit",
     ],

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { ScrollReveal } from "@/components/interactive/scroll-reveal";
+import { AccountingDifferentiationSection } from "@/components/sections/accounting-differentiation-section";
 import { AudienceSection } from "@/components/sections/audience-section";
 import { BenefitSection } from "@/components/sections/benefit-section";
 import { DashboardPreviewSection } from "@/components/sections/dashboard-preview-section";
@@ -15,7 +16,7 @@ import { siteConfig } from "@/content/site";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Sistem Informasi Operasional, Billing & Akuntansi PDAM",
+  title: "Sistem Billing & Akuntansi PDAM Terintegrasi",
   description: siteConfig.description,
   path: "/",
 });
@@ -28,6 +29,9 @@ export default function HomePage() {
         <ProblemSection />
       </ScrollReveal>
       <ScrollReveal delayMs={80}>
+        <AccountingDifferentiationSection />
+      </ScrollReveal>
+      <ScrollReveal delayMs={100}>
         <AudienceSection />
       </ScrollReveal>
       <ScrollReveal delayMs={120}>

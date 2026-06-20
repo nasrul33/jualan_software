@@ -14,7 +14,7 @@ interface FinalCtaSectionProps {
 
 export function FinalCtaSection({
   title = "Siapkan alur operasional, billing, dan akuntansi PDAM yang lebih tertib",
-  description = "Jadwalkan demo untuk membahas kebutuhan pelanggan, sambungan, baca meter, tarif, DRD, pembayaran, piutang, kas/bank, jurnal, laporan SAK EP, portal, dan audit trail di PDAM Anda.",
+  description = "Jadwalkan demo untuk membahas alur billing-to-accounting: pelanggan, baca meter, DRD, pembayaran, piutang, kas/bank, jurnal, GL, laporan SAK EP, portal, dan audit trail di PDAM Anda.",
 }: FinalCtaSectionProps) {
   const whatsappUrl = createWhatsAppUrl(
     "Halo PDAMCore, saya ingin meminta proposal dan jadwal demo.",

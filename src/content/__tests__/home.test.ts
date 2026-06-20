@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  accountingDifferentiators,
   dashboardInsights,
   homepageAudiences,
   homepageMetrics,
@@ -24,5 +25,9 @@ describe("homepage content contract", () => {
     expect(homepageMetrics.length).toBeGreaterThanOrEqual(4);
     expect(homepageAudiences.length).toBeGreaterThanOrEqual(4);
     expect(dashboardInsights.length).toBeGreaterThanOrEqual(3);
+    expect(accountingDifferentiators).toHaveLength(4);
+    expect(accountingDifferentiators.map((item) => item.title)).toContain(
+      "Billing-to-accounting traceability",
+    );
   });
 });

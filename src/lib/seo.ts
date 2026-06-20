@@ -16,6 +16,8 @@ const defaultKeywords = [
   "aplikasi PDAM",
   "software PDAM",
   "aplikasi billing PDAM",
+  "sistem billing akuntansi PDAM",
+  "billing to accounting PDAM",
   "sistem informasi PDAM",
   "aplikasi akuntansi PDAM",
   "laporan SAK EP PDAM",
@@ -127,7 +129,7 @@ export function websiteJsonLd(): Record<string, unknown> {
       logo: absoluteUrl("/images/logo-pdamcore.svg"),
     },
     description:
-      "Website marketing dan edukasi PDAMCore untuk sistem informasi billing, kasir, akuntansi, laporan, dan audit trail PDAM.",
+      "Website marketing dan edukasi PDAMCore untuk sistem billing-to-accounting, kasir, piutang, kas-bank, jurnal, laporan, dan audit trail PDAM.",
   };
 }
 
@@ -140,7 +142,7 @@ export function softwareApplicationJsonLd(): Record<string, unknown> {
     operatingSystem: "Web",
     url: SITE_URL,
     description:
-      "Sistem informasi operasional, billing, kasir, piutang, kas-bank, akuntansi, laporan SAK EP, dan audit trail PDAM yang terintegrasi dan siap audit.",
+      "Sistem billing-to-accounting PDAM yang menghubungkan DRD, kasir, piutang, kas-bank, jurnal, GL, laporan SAK EP, dan audit trail secara terintegrasi dan siap audit.",
     audience: {
       "@type": "BusinessAudience",
       audienceType: "PDAM dan Perumdam",

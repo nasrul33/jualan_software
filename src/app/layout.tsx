@@ -16,7 +16,7 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Sistem Informasi Operasional, Billing & Akuntansi PDAM",
+  title: "Sistem Billing & Akuntansi PDAM Terintegrasi",
   description: siteConfig.description,
   path: "/",
 });

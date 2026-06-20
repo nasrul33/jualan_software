@@ -8,8 +8,8 @@ export function WorkflowSection() {
       <div className="container">
         <SectionHeading
           eyebrow="Workflow Terintegrasi"
-          title="Dari sambungan pelanggan sampai laporan SAK EP dalam satu alur data"
-          description="Setiap proses saling memberi konteks sehingga meter, tarif, DRD, pembayaran, jurnal, buku besar, dan audit trail tidak berdiri sendiri."
+          title="Dari baca meter ke jurnal dan laporan, tanpa putus data"
+          description="Setiap proses saling memberi konteks sehingga meter, tarif, DRD, pembayaran, piutang, jurnal, buku besar, laporan, dan audit trail tidak berdiri sendiri."
           align="center"
         />
         <InteractiveWorkflow steps={workflowSteps} />
